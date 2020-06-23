@@ -1,0 +1,69 @@
+#  Rosa Elizabeth Parra Sosa
+# Ejercicios 1 Validacion de numeros
+def funciones(num):
+
+    # Validar numero positivo, negativo o cero
+    if num == 0:
+        print('El numero ingresado es cero')
+    elif num > 0:
+        print('El numero ingresado es positivo')
+    else:
+        print("El numero ingresado es negativo")
+
+    # Validar numero par o impar
+    if num % 2 == 0:
+        print('El numero ingresado es par')
+    else:
+        print('El numero ingresado es impar')
+
+    # Validar si es numero primo
+    def primo(n):
+        if n < 1:
+            return 0
+        elif n == 2:
+            return True
+        else:
+            for i in range(2, n):
+                if n % i == 0:
+                    return False
+        return True
+
+    prim = primo(num)
+    if prim is True:
+        print('El numero ingresado es primo')
+    elif prim is False:
+        print('El numero ingresado no es primo')
+    else:
+        print('Numero no valido')
+
+
+# Validar año bisiesto
+def bisiesto(a):
+    if a < 0:
+        return 0
+    else:
+        if a % 4 == 0:
+            if a % 400 == 0:
+                return True
+            elif a % 100 != 0:
+                return True
+    return False
+
+
+if __name__ == '__main__':
+    # Un solo numero para all
+    print('ingrese un numero:')
+    numero = int(input())
+
+    funciones(numero)
+
+    print('Ingrese un año: ')
+    anio = int(input())
+
+    bis = bisiesto(anio)
+    if bis is True:
+        print('El año ingresado es bisiesto')
+    elif bis is False:
+        print('El año ingresado no es bisiesto')
+    elif bis == 0:
+        print('No se permiten años inferiores al nacimiento de cristo')
