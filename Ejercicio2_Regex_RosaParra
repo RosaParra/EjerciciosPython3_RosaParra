@@ -1,0 +1,45 @@
+#   Rosa Elizabeth Parra Sosa
+#   Ejercicios 2 Regex
+import re
+
+texto = 'Rosita'
+
+#  Sin letras
+nLet = '[^A-Za-z]'
+noLetra = re.match(nLet, texto)
+if noLetra:
+    print('No letra: ', True)
+else:
+    print('Su texto tiene letra')
+
+#  Solo Numeros
+sNum = '[0-9]+'
+soloNumero = re.match(sNum, texto)
+if soloNumero:
+    print('Solo Numeros: ', True)
+else:
+    print('Su texto tiene letra')
+
+#  Solo Mayusculas
+sMa = '[A-Z]+$'
+soloMayus = re.match(sMa, texto)
+if soloMayus:
+    print('Solo Mayusculas: ', True)
+else:
+    print('Su texto tiene minusculas o numeros')
+
+# Solo Minusculas
+sMin = '[a-z]+$'
+soloMin = re.match(sMin, texto)
+if soloMin:
+    print('Solo Minusculas: ', True)
+else:
+    print('Su texto tiene mayusculas o numeros')
+
+# Sin Numeros
+nNum = '[^0-9]+$'
+noNumero = re.match(nNum, texto)
+if noNumero:
+    print('No Numeros: ', True)
+else:
+    print('Su texto tiene numero')
