@@ -1,0 +1,57 @@
+#  Rosa Elizabeth Parra Sosa
+# Tarea 2 Validaciones con expresiones regulares
+
+import re
+
+print('Validación de Correos: ')
+correo = 'rosa.parra@alumnos.udg.mx', 'eli.parra.ep4@gmail.com', 'eli@.mx', 'rosa.parra@python.padts.mx'
+
+validacion = '[A-Za-z0-9.]{5,15}@([A-Za-z0-9]+)(\.[A-Za-z0-9]{2,3})'
+
+for nC in correo:
+    vCorreo = re.match(validacion, nC)
+    if vCorreo:
+         print(f'Correo {nC} Válido')
+    else:
+        print(f'Correo {nC}  no valido')
+
+
+# Validación de Números de teléfono
+
+print('\nValidación de Telefonos:')
+telefono = '3315355685', '(33)14955364', '(331)4955364', '(3314)955364', '(3)314955364', '(33) 1495 5364', '(331)-495-5364'
+
+vTelefono = '([0-9]{10})|\([0-9]{2,3}\)[0-9]{7,8}|\([0-9]{2,3}\)[ ][0-9]{3,4}[ ][0-9]{4}|\([0-9]{2,3}\)[-][0-9]{3,4}[-][0-9]{4}'
+
+for nT in telefono:
+    vTel = re.match(vTelefono, nT)
+    if vTel:
+        print(f'Numero {nT} Valido')
+    else:
+        print(f' {nT} no es un numero de telefono valido')
+
+# Validación RFC
+print('\n Validación de Curp:')
+curp = 'PASR970705MJCRSS05', 'VACF920416HJCZAB05','PASR970705FNESDF0X'
+
+vCurp = '([A-Z]{4}[0-9]{6}[MH][A-Z]{1}[CE][A-Z]{3}[0-9]{2}$)'
+for nCu in curp:
+    vCu = re.match(vCurp, nCu)
+    if vCu:
+        print(f'Curp {nCu} Valido')
+    else:
+        print(f'{nCu} no es un Curp valido')
+
+# Validar RFC
+print('\n Validación de RFC:')
+RFC = 'PASR970705H72', 'PASR970705MJCRSS05',
+
+
+vRFC = '([A-Z]{4}[0-9]{6}[A-Z0-9]{3}$)'
+for nrfc in RFC:
+    vR = re.match(vRFC, nrfc)
+    if vR:
+        print(f'RFC {nrfc} Valido')
+    else:
+        print(f'{nrfc} no es un RFC valido')
+        
