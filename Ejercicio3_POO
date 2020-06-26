@@ -1,0 +1,78 @@
+# Rosa Elizabeth Parra Sosa
+# Ejercicios 3 POO
+
+class Figura():
+    base = ''
+    altura = ''
+    lado = ''
+
+    def __init__(self, lado, base, altura):
+        self.base = base
+        self.lado = lado
+        self.altura = altura
+
+    def perimetro(self):
+        pass
+
+    def area(self):
+        areaFig = (self.base * self.altura)
+        return areaFig
+
+class Rectangulo(Figura):
+    def __init__(self, lado, base, altura):
+        super().__init__(lado, base, altura)
+
+    def perimetro(self):
+        perimetroRectangulo = self.base * 2 + self.altura * 2
+        return perimetroRectangulo
+
+    def area(self):
+        return super().area()
+
+class Triangulo(Figura):
+
+    def __init__(self, lado, base, altura):
+        super().__init__(lado, base, altura)
+
+    def perimetro(self):
+        return (self.lado * 3)
+
+    def area(self):
+        return (super().area()/2)
+
+class Estudiante():
+    _nombre = ''
+    _correoElectronico = ''
+    _contrasena  = ''
+
+    def __init__(self):
+        pass
+
+    def ingresar(self):
+        print('Ingrese su Nombre: ')
+        self._nombre = str(input())
+        print('Ingrese su Correo Electroónico: ')
+        self._correoElectronico = str(input())
+        print('Ingrese su Contraseña: ')
+        self._contrasena = str(input())
+    def obtener(self):
+        print(f'Su Nombre es {self._nombre}')
+        print(f'Su Correo Electrónico es {self._correoElectronico}')
+        print(f'Su Contraseña es {self._contrasena}')
+
+if __name__ == '__main__':
+
+    print('Rectangulo')
+    rec = Rectangulo(5,5,4)
+    print('Area: ',rec.area())
+    print('Perimetro: ',rec.perimetro())
+
+    print('\n Triangulo')
+    trian = Triangulo(5, 5, 2)
+    print('Area: ',trian.area())
+    print('Perimetro: ',trian.perimetro())
+
+    print('\n Estudiante')
+    est = Estudiante()
+    est.ingresar()
+    est.obtener()
