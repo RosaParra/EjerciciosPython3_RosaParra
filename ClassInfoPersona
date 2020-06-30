@@ -1,0 +1,33 @@
+# Rosa Elizabeth Parra Sosa
+# Tarea 3 Modulo estudiante
+
+class infoPersona():
+    __nombre = ''
+    __apellido = ''
+    __correoElectronico = ''
+    __contraseña = ''
+
+    def __init__(self, n, a, ce, con):
+        self.__nombre = n
+        self.__apellido = a
+        self.__correoElectronico = ce
+        self.__contraseña = con
+
+
+    def obtenerNombre(self):
+        return self.__nombre
+
+    def otenerApellido(self):
+        return self.__apellido
+
+    def obtenerCE(self):
+        return self.__correoElectronico
+
+    def obtenerC(self):
+        return self.__contraseña
+
+    def __str__(self):
+        return f'Nombre: {self.__nombre} \nApellido: {self.__apellido}\n' \
+               f'Correo Electrónico: {self.__correoElectronico}\nContraseña:' \
+               f' {self.__contraseña}'
+
