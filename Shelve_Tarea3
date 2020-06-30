@@ -1,0 +1,23 @@
+# Rosa Elizabeth Parra Sosa
+# Modulo shelve
+
+import ClassInfoPersona as st
+import shelve
+
+def saveStudentS(n,a,cE,con):
+    with shelve.open('Students_shelve') as shelf:
+        ip = st.infoPersona(n,a,cE,con)
+        shelf[n] = ip
+    shelf.close()
+
+def readStudentsS(p):
+    with shelve.open('Students_shelve') as readS:
+        key = [k for k in readS]
+        iipp=readS[key[p]]
+        print(iipp.__str__())
+    readS.close()
+
+def updateStudentsS(nombre, newN, newA, newCE, newC):
+    with shelve.open('Students_shelve') as updaS:
+        updaS[nombre] = st.infoPersona(newN,newA,newCE,newC)
+
