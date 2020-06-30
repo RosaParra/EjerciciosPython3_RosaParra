@@ -1,0 +1,34 @@
+# Rosa Elizabeth Parra Sosa
+# Tarea 3 Modulo Pickle
+
+import ClassInfoPersona as st
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
+
+Students = []
+
+
+def saveStudentP(n, a, CE, con):
+    file = open('StudentsPickle.txt', 'wb')
+    Students.append(st.infoPersona(n, a, CE, con))
+    pickle.dump(Students, file, 2)
+    file.close()
+
+
+def readStudentsP():
+    file = open('StudentsPickle.txt', 'rb')
+    unpickler = pickle.Unpickler(file)
+    readSt = unpickler.load( )
+    file.close()
+    for i in readSt:
+        print(f'\n {i}')
+
+def updateStudentP(student, pos):
+    Students.pop(pos)
+    Students.insert(pos, student)
+    file = open('StudentsPickle.txt', 'wb')
+    p = pickle.Pickler(file)
+    p.dump(Students)
+    file.close()
