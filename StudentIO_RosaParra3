@@ -1,0 +1,44 @@
+# Rosa Elizabeth Parra Sosa
+# Tarea 3
+
+import Shelve_Tarea3
+import Pickle_Tarea3
+
+nombres = ['Rosa', 'Elizabeth', 'Fabian', 'Alejandro', 'Rosario']
+apellidos = ['Parra', 'Sosa', 'Vazquez', 'Chavez', 'Hernandez']
+correos = ['eli.parra.ep4@gmail.com', 'rosa.parra@alumnos.udg.mx',
+           'fabian.fast@hotmail.com', 'alejandro.chavez@alumnos.udg.mx',
+           'rosario.hernandez@alumnos.udg.mx']
+contrasenas = ['abc123', 'def456', 'ghi789', 'jkl741', 'mno852']
+
+z = zip(nombres, apellidos, correos, contrasenas)
+
+
+# Para utilizar SHELVE
+s = Shelve_Tarea3
+p = Pickle_Tarea3
+# Guardar Datos
+for n, a, cE, con in z:
+    s.saveStudentS(n, a, cE, con)
+    p.saveStudentP(n, a, cE, con)
+
+# Leer los datos de con una llave
+# posicion a leer 0-4
+s.readStudentsS(0)
+
+#con la clave cambiar los datos
+s.updateStudentsS("Rosa", "Rosita", "Zambrano", "zambrano.r@gmail.com", "963pqr")
+
+s.readStudentsS(0)  # Verificando
+
+
+print('\n\n P I C K L E')
+# Para utilizar PICKLE
+
+# Leer Datos
+p.readStudentsP()
+
+# Actualizar estudiante
+es = ('Rosita', 'Zambrano', 'zambrano.r@gmail.com', '963pqr'St)
+pos = 2
+p.updateStudentP(es, pos)
