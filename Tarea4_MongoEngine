@@ -1,0 +1,90 @@
+# Rosa Elizabeth Parra Sosa
+# Tarea 4 Base de Datos estudiante con Mongo Engine
+
+from mongoengine import *
+
+#  Base de Datos nombre PADTS
+connect('PADTS')
+
+
+# Colección Estudiantes
+class Estudiantes(Document):
+    nombre = StringField(required=True)
+    apellido = StringField(required=True)
+    fecha = StringField(required=True)
+    correo = StringField(required=True)
+    contrasena = StringField(required=True)
+
+    def guardar(nom, ap, fe, coEl, con):
+        toSave = Estudiantes(
+            nombre=nom,
+            apellido=ap,
+            fecha=fe,
+            correo=coEl,
+            contrasena=con
+        )
+        toSave.save()
+
+    def leer(par):
+        for students in Estudiantes.objects:
+            if par == students.nombre:
+                print(f' Nombre: {students.nombre}\n'
+                      f' Apellido: {students.apellido}\n'
+                      f' Fecha: {students.fecha}\n'
+                      f' Correo: {students.correo}\n'
+                      f' Contraseña: {students.contrasena}')
+                break
+
+    def actualizar(par, nom, ap, fe, coEl, con):
+        for students in Estudiantes.objects:
+            if par == students.nombre:
+                students.nombre = nom
+                students.apellido = ap
+                students.fecha = fe
+                students.correo = coEl
+                students.contrasena = con
+                students.save()
+                print(f' Nombre: {students.nombre}\n'
+                      f' Apellido: {students.apellido}\n'
+                      f' Fecha: {students.fecha}\n'
+                      f' Correo: {students.correo}\n'
+                      f' Contraseña: {students.contrasena}')
+                break
+    def eliminar(par):
+        for students in Estudiantes.objects:
+            if par == students.nombre:
+                ID=students.id
+                Estudiantes.objects(id=ID).delete()
+                break
+            for students in Estudiantes.objects:
+                print(f' Nombre: {students.nombre}\n'
+                      f' Apellido: {students.apellido}\n'
+                      f' Fecha: {students.fecha}\n'
+                      f' Correo: {students.correo}\n'
+                      f' Contraseña: {students.contrasena}')
+
+
+
+nombres = ['Rosa', 'Elizabeth', 'Fabian', 'Alejandro', 'Rosario']
+apellidos = ['Parra', 'Sosa', 'Vazquez', 'Chavez', 'Hernandez']
+fechas = ['1997/07/05', '1980/01/17', '1992/04/16', '2017,01,07', '1997/05/02']
+correos = ['eli.parra.ep4@gmail.com', 'rosa.parra@alumnos.udg.mx',
+           'fabian.fast@hotmail.com', 'alejandro.chavez@alumnos.udg.mx',
+           'rosario.hernandez@alumnos.udg.mx']
+contrasenas = ['abc123', 'def456', 'ghi789', 'jkl741', 'mno852']
+
+
+es = Estudiantes
+
+# Guardar
+for n, a, f, ce, c in zip(nombres, apellidos, fechas, correos, contrasenas):
+    es.guardar(n, a, f, ce, c)
+
+# Leer un dato
+es.leer('Alejandro')
+
+# Actualizar un Estudiante
+es.actualizar('Rosa', 'Patricia', 'Jordan', '1980/01/17', 'gym.virtual@gmail.com', 'YPCT')
+
+# Eliminar
+es.eliminar('Alejandro')
