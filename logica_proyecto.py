@@ -26,9 +26,8 @@ class MainWindow(QMainWindow):
 
 
     def conexionTCP(self):
-        ip0 = f'\'{self.ui.IP.text()}\''
+        ip = f'\'{self.ui.IP.text()}\''
         puerto = int(self.ui.Puerto.text())
-        ip = '127.0.0.1'
         print(ip)
         print(puerto)
         if self.Conectado == False:
